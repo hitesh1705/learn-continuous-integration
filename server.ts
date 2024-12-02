@@ -26,6 +26,7 @@ db.on('connected', () => {
   console.log('Connected to database');
 });
 
+
 // cors policy that allows requests from all origins. 
 // This is insecure and should be changed in production
 // to set trusted hosts
@@ -33,13 +34,16 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
+
 app.get('/home', (_, res: Response) => {
   Home.show_home(res);
 });
 
+
 app.get('/available', (_, res: Response) => {
   BooksStatus.showAllBooksStatus(res);
 });
+
 
 app.get('/books', async (_, res: Response) => {
   try {
@@ -50,13 +54,16 @@ app.get('/books', async (_, res: Response) => {
   }
 });
 
+
 app.get('/authors', (_, res: Response) => {
   Authors.showAllAuthors(res);
 });
 
+
 app.get('/book_dtls', (req: Request, res: Response) => {
   BookDetails.showBookDtls(res, req.query.id as string);
 });
+
 
 app.post('/newbook', (req: Request, res: Response) => {
   const { familyName, firstName, genreName, bookTitle } = req.body;
