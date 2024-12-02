@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import Author, { IAuthor } from '../models/author';
 
+
 // Function to get the list of authors
 export const getAuthorList = async (): Promise<string[]> => {
   try {
@@ -12,6 +13,7 @@ export const getAuthorList = async (): Promise<string[]> => {
     return [];
   }
 };
+
 
 // Function to handle the request and respond with author list
 export const showAllAuthors = async (res: Response): Promise<void> => {
